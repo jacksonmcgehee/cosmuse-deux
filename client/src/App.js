@@ -11,6 +11,7 @@ import thunk from 'redux-thunk'
 import rootReducer from './rootReducer'
 
 import PostsList from "./components/posts/PostsList"
+import PostShow from "./components/posts/PostShow"
 
 const middleware = [logger, thunk]
 
@@ -26,6 +27,7 @@ class App extends Component {
         <Router>
           <Switch>
               <Route exact path="/" component={PostsList}/>
+              <Route exact path="/posts/:id" component={PostShow} />
           </Switch>
         </Router>
       </Provider>

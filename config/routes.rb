@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    get 'posts/show'
+    get 'posts/:id', to: 'posts#show'
   end
 
   namespace :api do
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    get 'posts/destroy'
+    delete 'posts/:id', to: 'posts#destroy'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

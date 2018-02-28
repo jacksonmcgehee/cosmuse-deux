@@ -28,8 +28,8 @@ class PostsList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    posts: state.posts,
-    isLoaded: state.postsLoaded,
+    posts: state.posts.posts,
+    isLoaded: state.posts.postsLoaded,
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
