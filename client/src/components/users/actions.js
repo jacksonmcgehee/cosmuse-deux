@@ -36,9 +36,3 @@ export function addUser(newUser) {
         })
     }
 }
-
-export function resetNewUserForm() {
-    return {
-        type: 'RESET_NEW_USER_FORM',
-    }
-}

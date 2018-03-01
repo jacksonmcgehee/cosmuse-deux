@@ -43,24 +43,24 @@ class NewUser extends Component {
             <div>
                 <form onSubmit={this.addNewUser} >
                     <div>
-                    <label >First Name</label>
-                    <input type="text" name="f_name" onChange={this.handleNewUserChange} />
+                        <label >First Name</label>
+                        <input type="text" name="f_name" onChange={this.handleNewUserChange} />
                     </div>
                     <div>
-                    <label >Last Name</label>
-                    <input type="text" name="l_name" onChange={this.handleNewUserChange} />
+                        <label >Last Name</label>
+                        <input type="text" name="l_name" onChange={this.handleNewUserChange} />
                     </div>
                     <div>
-                    <label >User Name</label>
-                    <input type="text" name="user_name" onChange={this.handleNewUserChange} />
+                        <label >User Name</label>
+                        <input type="text" name="user_name" onChange={this.handleNewUserChange} />
                     </div>
                     <div>
-                    <label >Email</label>
-                    <input type="text" name="email" onChange={this.handleNewUserChange} />
+                        <label >Email</label>
+                        <input type="text" name="email" onChange={this.handleNewUserChange} />
                     </div>
                     <div>
-                    <label >Profile Picture URL</label>
-                    <input type="text" name="profile_pic" onChange={this.handleNewUserChange} />
+                        <label >Profile Picture URL</label>
+                        <input type="text" name="profile_pic" onChange={this.handleNewUserChange} />
                     </div>
                     <input type="submit" value="Create Profile" />
                 </form>

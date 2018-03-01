@@ -23,10 +23,12 @@ class UserShow extends Component {
                 <Link to='/'><button>Home</button></Link>
 
                 <h1>Posts</h1>
+                <Link to={`/users/${user.id}/newpost`}><button>Create New Post</button></Link>
                 {posts.map(post => <div key={post.id} >
                 <img width='100' src={post.picture} alt=""/>
                 <h1>{post.title}</h1>
                 <h3>{post.body}</h3>
+                <button>Delete</button>
                 </div>)}
             </div>
         )

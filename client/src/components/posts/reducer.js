@@ -1,5 +1,5 @@
 
-import { GET_POSTS, SHOW_POST } from './actions'
+import { GET_POSTS, SHOW_POST, ADD_POST } from './actions'
 
 
 const initialState = {
@@ -25,6 +25,11 @@ export default function (state = initialState, action) {
                 post: data.post,
                 user: data.user,
                 postLoaded: true,
+            }
+        case ADD_POST:
+            return {
+                ...state,
+                posts: data,
             }
         default:
             return state
