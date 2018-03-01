@@ -32,6 +32,12 @@ christopher_okigbo = User.create!(
     profile_pic: 'https://i.imgur.com/ZBNFXnU.jpg'
 )
 
+kiwanuka = User.create!(
+    email: 'mike@kiwanuka.com',
+    user_name: 'Michael Kiwanuka',
+    profile_pic: 'https://i.imgur.com/TTfb1Cd.jpg',
+)
+
 ah_bam.posts.create!(
     title: 'Flower Song',
     body: 'The most alluring moon
@@ -110,4 +116,42 @@ christopher_okigbo.posts.create!(
     my lioness, 
     crowned with moonlight. ',
     picture: 'https://images-assets.nasa.gov/image/A Galactic Spectacle_4862916839_o/A Galactic Spectacle_4862916839_o~orig.jpg'
+)
+
+kiwanuka.posts.create!(
+    title: 'Rule the World',
+    body: "Do I have to rule the world?
+    Or will it come to me?
+    Do I have to live in down
+    Or will it turn to me?
+    Do I have to lose my mind?
+    'Cause it's been wandering
+    Will they ever let me out?
+    I've been wondering
+    
+    Help me to see
+    Who I can be
+    Help me to know
+    Where I can go
+    
+    Take me out of myself again
+    Help me lose control
+    Show me love, show me happiness
+    I can't do this on my own
+    
+    I don't understand the game
+    Or who I'm meant to be
+    It's driving me insane
+    The way you're playing me
+    
+    Help me to see
+    Who I can be
+    Help me to know
+    Where I can go
+    
+    Take me out of myself again
+    Help me lose control
+    Show me love, show me happiness
+    I can't do this on my own",
+    picture: 'https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000720/GSFC_20171208_Archive_e000720~orig.jpg'
 )

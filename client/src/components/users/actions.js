@@ -3,7 +3,7 @@ import axios from 'axios'
 export const GET_USERS = 'GET_USERS'
 export const SHOW_USER = 'SHOW_USER'
 export const ADD_USER = 'ADD_USER'
-export const RESET_NEW_USER_FORM = 'RESET_NEW_USER_FORM'
+export const UPDATE_USER = 'UPDATE_USER'
 
 
 export function getUsers() {
@@ -32,6 +32,16 @@ export function addUser(newUser) {
         const res = await axios.post('/api/users', newUser)
         return dispatch({
             type: 'ADD_USER',
+            data: res.data
+        })
+    }
+}
+
+export function updateUser(id, updatedUser) {
+    return async function (dispatch) {
+        const res = await axios.patch(`/api/users/${id}`, updatedUser)
+        return dispatch({
+            type: 'UPDATE_USER',
             data: res.data
         })
     }

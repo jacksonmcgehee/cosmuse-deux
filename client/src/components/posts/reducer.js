@@ -1,5 +1,5 @@
 
-import { GET_POSTS, SHOW_POST, ADD_POST } from './actions'
+import { GET_POSTS, SHOW_POST, ADD_POST, UPDATE_POST } from './actions'
 
 
 const initialState = {
@@ -30,6 +30,12 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 posts: data,
+            }
+        case UPDATE_POST:
+            return {
+                ...state,
+                posts: data.posts,
+                post: data.post
             }
         default:
             return state

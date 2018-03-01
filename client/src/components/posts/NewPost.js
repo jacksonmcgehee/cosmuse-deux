@@ -55,6 +55,10 @@ class NewPost extends Component {
         this.setState({redirect: true})
     }
 
+    toggleForm = () => {
+        this.setState({isOpenForm: !this.state.isOpenForm})
+    }
+
     render() {
         const { user } = this.props
         if(this.state.redirect){
@@ -63,13 +67,13 @@ class NewPost extends Component {
 
         return (
             <div>
-                <h1>{this.state.nasaPictures.length}</h1>
                 <div>
                     <img width='500' src={this.state.currentPic.href} alt=""/>
                 </div>
                 <button onClick={this.getRandomPic}>Button</button>
                 <button onClick={this.makeRandomSearch}>Shake it Up</button>
-                <button >Write</button>
+                <button onClick={this.toggleForm}>Write</button>
+                {this.state.isOpenForm ? 
                 <div>
                     <form onSubmit={this.addNewPost}>
                         <div>
@@ -85,6 +89,7 @@ class NewPost extends Component {
                         </div>
                     </form>
                 </div>
+                : null }
             </div>
         );
     }

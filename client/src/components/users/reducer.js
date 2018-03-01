@@ -1,5 +1,5 @@
 
-import { GET_USERS, SHOW_USER, ADD_USER, RESET_NEW_USER_FORM} from './actions'
+import { GET_USERS, SHOW_USER, ADD_USER, UPDATE_USER} from './actions'
 
 
 const initialState = {
@@ -34,11 +34,11 @@ export default function (state = initialState, action) {
                 user: data.user,
                 userLoaded: true
             }
-        case RESET_NEW_USER_FORM:
+        case UPDATE_USER:
             return {
                 ...state,
                 user: {},
-                userLoaded: false,
+                userLoaded: true,
             }
         default:
             return state
