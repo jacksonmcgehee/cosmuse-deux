@@ -10,6 +10,10 @@ import thunk from 'redux-thunk'
 
 import rootReducer from './rootReducer'
 
+import LandingPage from './components/LandingPage'
+import UsersList from "./components/users/UsersList"
+import NewUser from './components/users/NewUser'
+import UserProfile from "./components/users/UserProfile"
 import PostsList from "./components/posts/PostsList"
 import PostShow from "./components/posts/PostShow"
 
@@ -26,7 +30,11 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Switch>
-              <Route exact path="/" component={PostsList}/>
+              <Route exact path="/" component={LandingPage}/>
+              <Route exact path="/users" component={UsersList}/>
+              <Route exact path="/new/user" component={NewUser}/>
+              <Route exact path="/users/:id" component={UserProfile}/>
+              <Route exact path="/posts" component={PostsList}/>
               <Route exact path="/posts/:id" component={PostShow} />
           </Switch>
         </Router>

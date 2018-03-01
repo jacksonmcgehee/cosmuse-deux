@@ -28,8 +28,8 @@ class PostShow extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    post: state.posts.post,
-    user: state.posts.user,
+    post: state.postsReducer.post,
+    user: state.postsReducer.user,
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

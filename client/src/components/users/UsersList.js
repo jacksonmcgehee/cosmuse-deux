@@ -2,25 +2,25 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { getPosts } from './actions'
-import Post from "./Post"
+import { getUsers } from './actions'
+import User from "./User"
 
-class PostsList extends Component {
+class UsersList extends Component {
 
     componentWillMount() {
-        const { getPosts, isLoaded } = this.props
+        const { getUsers, isLoaded } = this.props
         if (!isLoaded) {
-            getPosts()
+            getUsers()
         }
     }
 
     render() {
-        const { posts, isLoaded } = this.props
+        const { users, isLoaded } = this.props
         if (!isLoaded) return <h1>Loading...</h1>
         return (
             <div>
-                <h1>Posts</h1>
-                {posts.map(post => <Post key={post.id} post={post} />)}
+                <h1>Users</h1>
+                {users.map(user => <User key={user.id} user={user} />)}
                 {/* {props.posts.length > 0 ? posts : null} */}
             </div>
         )
@@ -28,12 +28,12 @@ class PostsList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    posts: state.postsReducer.posts,
-    isLoaded: state.postsReducer.postsLoaded,
+    users: state.usersReducer.users,
+    isLoaded: state.usersReducer.usersLoaded,
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    getPosts
+    getUsers
 }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostsList)
+export default connect(mapStateToProps, mapDispatchToProps)(UsersList)
