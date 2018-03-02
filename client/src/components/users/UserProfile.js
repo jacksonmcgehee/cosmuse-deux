@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { showUser, updateUser } from './actions'
+import { showUser, updateUser, deleteUser, deletePost } from './actions'
 
 class UserShow extends Component {
 
     state = {
         isEditActive: false,
-        updatedUser: {}
+        updatedUser: {},
+        userDeleted: false,
     }
 
     componentWillMount() {
@@ -42,9 +43,21 @@ class UserShow extends Component {
         this.setState({isEditActive: false})
     }
 
+    deleteThisUser = async () => {
+        await this.props.deleteUser(this.props.user.id)
+        this.setState({userDeleted: true})
+    }
+
+    deleteThisPost = async (postId) => {
+        const userId = this.props.match.params.id
+        await this.props.deletePost(userId, postId)
+        showUser(userId)
+    }
+
     render() {
         const { user, posts } = this.props
         if(!user.id) return null
+        if(this.state.userDeleted) return (<Redirect to={`/`} />)
         return (
             <div >
                 {!this.state.isEditActive ? 
@@ -91,6 +104,7 @@ class UserShow extends Component {
                 }
                 <button onClick={this.toggleEditForm} >Edit Profile</button>
                 <Link to='/'><button>Home</button></Link>
+                <button onClick={this.deleteThisUser}>Delete</button>
 
                 <h1>Posts</h1>
                 <Link to={`/users/${user.id}/newpost`}><button>Create New Post</button></Link>
@@ -99,7 +113,8 @@ class UserShow extends Component {
                 <h1>{post.title}</h1>
                 <h3>{post.body}</h3>
                 <button>Delete</button>
-                <button>Edit</button>
+                <Link to={`/users/${this.props.user.id}/post/${post.id}/edit`} ><button>Edit</button></Link>
+                <button onClick={() => this.deleteThisPost(post.id)} >Delete Post</button>
                 </div>)}
             </div>
         )
@@ -113,7 +128,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
     showUser,
-    updateUser
+    updateUser,
+    deleteUser,
+    deletePost
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserShow)

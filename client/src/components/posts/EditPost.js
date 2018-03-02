@@ -14,8 +14,24 @@ class EditPost extends Component {
 
     componentWillMount() {
         const { showPost, post, match } = this.props
-        showPost(match.params.id)
+        showPost(match.params.postId)
         this.setState({updatedPost: post})
+    }
+
+    handleEditPostChange = (event) => {
+        event.preventDefault()
+        const attributeName = event.target.name
+        const attributeValue = event.target.value
+        const updatedPost = {...this.state.updatedPost}
+
+        updatedPost[attributeName] = attributeValue
+
+        this.setState({updatedPost})
+    }
+
+    updateThisPost = async (event) => {
+        event.preventDefault()
+        this.props.updatePost(this.props.user.id, this.state.updatedPost)
     }
 
     render() {
@@ -31,6 +47,23 @@ class EditPost extends Component {
                 <h3>Author: {user.user_name}</h3>
                 <h1>{post.title}</h1>
                 <h3>{post.body}</h3>
+                <form onSubmit={this.updateThisPost}>
+                    <div>
+                        <label >Title</label>
+                        <input type="text" name="title" onChange={this.handleEditPostChange} value={this.state.updatedPost.title}/>
+                    </div>
+                    <div>
+                        <label >Your art</label>
+                        <textarea type="text area" name="body" onChange={this.handleEditPostChange} value={this.state.updatedPost.body} />
+                    </div>
+                    <div>
+                        <label >Picture</label>
+                        <input type="text area" name="body" onChange={this.handleEditPostChange} value={this.state.updatedPost.picture} />
+                    </div>
+                    <div>
+                        <input type="submit"/>
+                    </div>
+                </form>
             </div>
         )
     }

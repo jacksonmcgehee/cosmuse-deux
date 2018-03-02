@@ -1,5 +1,5 @@
 
-import { GET_USERS, SHOW_USER, ADD_USER, UPDATE_USER} from './actions'
+import { GET_USERS, SHOW_USER, ADD_USER, UPDATE_USER, DELETE_USER, DELETE_POST} from './actions'
 
 
 const initialState = {
@@ -39,6 +39,16 @@ export default function (state = initialState, action) {
                 ...state,
                 user: {},
                 userLoaded: true,
+            }
+        case DELETE_USER:
+            return {
+                ...state,
+                users: data
+            }
+        case DELETE_POST:
+            return {
+                ...state,
+                posts: data
             }
         default:
             return state

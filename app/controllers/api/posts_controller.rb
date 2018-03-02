@@ -21,11 +21,21 @@ class Api::PostsController < ApplicationController
     render json: @response
   end
 
-  # def update
-  # end
+  def update
+    @post = Post.find(params[:id])
+    @post.update!(post_params)
+    @posts = User.find(@post.user_id).posts
 
-  # def destroy
-  # end
+    @response = { posts: @posts, post: @post }
+    render json: @response
+  end
+
+  def destroy
+    @post = Post.find(params[:id]).destroy
+    @posts = User.find(params[:user_id]).posts
+
+    render json: @posts
+end
 
   private
   

@@ -17,6 +17,7 @@ import UserProfile from "./components/users/UserProfile"
 import PostsList from "./components/posts/PostsList"
 import PostShow from "./components/posts/PostShow"
 import NewPost from './components/posts/NewPost'
+import EditPost from './components/posts/EditPost'
 
 const middleware = [logger, thunk]
 
@@ -38,6 +39,7 @@ class App extends Component {
               <Route exact path="/posts" component={PostsList}/>
               <Route exact path="/posts/:id" component={PostShow} />
               <Route exact path="/users/:id/newpost" component={NewPost} />
+              <Route exact path="/users/:userId/post/:postId/edit" component={EditPost} />
           </Switch>
         </Router>
       </Provider>
