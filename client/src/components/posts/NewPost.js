@@ -2,8 +2,13 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import styled from 'styled-components'
 
 import { addPost } from './actions'
+
+import MainDiv from '../styledComponents/MainDiv'
+import InputBox from '../styledComponents/InputBox'
+import Header from '../styledComponents/Header'
 
 class NewPost extends Component {
 
@@ -66,31 +71,32 @@ class NewPost extends Component {
         }
 
         return (
-            <div>
-                <div>
+            <MainDiv>
+                <Header/>
+                <ImgCont>
                     <img width='500' src={this.state.currentPic.href} alt=""/>
-                </div>
-                <button onClick={this.getRandomPic}>Button</button>
-                <button onClick={this.makeRandomSearch}>Shake it Up</button>
-                <button onClick={this.toggleForm}>Write</button>
+                </ImgCont>
+                <ButtonCont>
+                    <button className='profile-button' onClick={this.getRandomPic}>Next</button>
+                    <button className='profile-button' onClick={this.makeRandomSearch}>Shake Up</button>
+                    <button className='profile-button' onClick={this.toggleForm}>Write</button>
+                </ButtonCont>
                 {this.state.isOpenForm ? 
                 <div>
                     <form onSubmit={this.addNewPost}>
                         <div>
-                            <label >Title</label>
-                            <input type="text" name="title" onChange={this.handleNewPostChange} />
+                            <InputBox type="text" name="title" onChange={this.handleNewPostChange} placeholder='Title' />
                         </div>
                         <div>
-                            <label >Your art</label>
-                            <textarea type="text area" name="body" onChange={this.handleNewPostChange} />
+                            <InputBox type="text area" name="body" onChange={this.handleNewPostChange} placeholder='Your Art' />
                         </div>
                         <div>
-                            <input type="submit"/>
+                            <input className='profile-button' type="submit"/>
                         </div>
                     </form>
                 </div>
                 : null }
-            </div>
+            </MainDiv>
         );
     }
 }
@@ -104,3 +110,17 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps) (NewPost)
+
+const ImgCont = styled.div`
+    height: 500px;
+    width: 500px;
+    overflow: hidden;
+    margin-top: 60px;
+`
+
+const ButtonCont = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 700px;
+`

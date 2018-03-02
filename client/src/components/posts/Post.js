@@ -7,27 +7,32 @@ import MainDiv from '../styledComponents/MainDiv'
 
 const Post = ({ post }) => {
 
-    // const deletePost = () => {
-    //     props.deletePost(props.id)
-    // }
     return (
         <Link to={`/posts/${post.id}`}>
-            <div><img width='400' src={post.picture} alt=""/></div>
-            <div><h2>{post.title}</h2></div>
-            <div>{post.body}</div>
-            <div>
-                {/* <button onClick={deletePost}>Delete</button> */}
-            </div>
+            <PostPreview>
+                <Img src={post.picture} alt=""/>
+                <Div><h2>{post.title}</h2></Div>
+            </PostPreview>
         </Link>
     )
 }
 
 export default Post
 
-Post.propTypes = {
-    post: PropTypes.shape({
-        picture: PropTypes.string,
-        title: PropTypes.string,
-        body: PropTypes.string
-    }).isRequired,
-}
+const PostPreview = styled.div`
+    width: 500px;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    margin: 15px 0;
+`
+const Img = styled.img`
+    width: 200px;
+`
+const Div = styled.div`
+    color: black;
+    text-align: center;
+`

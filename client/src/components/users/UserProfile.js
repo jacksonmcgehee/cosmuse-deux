@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import styled from 'styled-components'
 
 import { showUser, updateUser, deleteUser, deletePost } from './actions'
 
 import Header from '../styledComponents/Header'
+import MainDiv from '../styledComponents/MainDiv'
+import InputBox from '../styledComponents/InputBox'
 
 class UserShow extends Component {
 
@@ -61,13 +64,13 @@ class UserShow extends Component {
         if(!user.id) return null
         if(this.state.userDeleted) return (<Redirect to={`/`} />)
         return (
-            <div >
+            <MainDiv >
                 <Header/>
                 {!this.state.isEditActive ? 
-                <div>
+                <ProfileData>
                     <img width='200' src={user.profile_pic} alt=""/>
                     <h3>{user.user_name}</h3> 
-                </div> :
+                </ProfileData> :
                  
                 <div  >
                     <form onSubmit={this.updateThisUser} >
@@ -105,21 +108,23 @@ class UserShow extends Component {
                     </form>
                 </div>
                 }
-                <button onClick={this.toggleEditForm} >Edit Profile</button>
-                <Link to='/'><button>Home</button></Link>
-                <button onClick={this.deleteThisUser}>Delete</button>
+                <div>
+                    <button onClick={this.toggleEditForm} className='profile-button' >Edit</button>
+                    <Link to='/'><button className='profile-button' >Home</button></Link>
+                    <button onClick={this.deleteThisUser} className='profile-button' >Delete</button>
+                </div>
 
                 <h1>Posts</h1>
-                <Link to={`/users/${user.id}/newpost`}><button>Create New Post</button></Link>
-                {posts.map(post => <div key={post.id} >
+                <Link to={`/users/${user.id}/newpost`}><button  className='profile-button' >Create</button></Link>
+                {posts.map(post => <PostPreview key={post.id} >
                 <img width='100' src={post.picture} alt=""/>
-                <h1>{post.title}</h1>
-                <h3>{post.body}</h3>
-                <button>Delete</button>
-                <Link to={`/users/${this.props.user.id}/post/${post.id}/edit`} ><button>Edit</button></Link>
-                <button onClick={() => this.deleteThisPost(post.id)} >Delete Post</button>
-                </div>)}
-            </div>
+                <div>
+                    <h1>{post.title}</h1>
+                    <Link to={`/users/${this.props.user.id}/post/${post.id}/edit`} ><button className='profile-button' >Edit</button></Link>
+                    <button onClick={() => this.deleteThisPost(post.id)} className='profile-button' >Delete</button>
+                </div>
+                </PostPreview>)}
+            </MainDiv>
         )
     }
 }
@@ -137,3 +142,23 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserShow)
+
+const ProfileData = styled.div`
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 65px;
+
+`
+
+const PostPreview = styled.div`
+    width: 500px;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+`
