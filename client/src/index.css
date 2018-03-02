@@ -3,3 +3,54 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+a {
+  text-decoration: none;
+}
+
+.landing-title {
+  font-size: 78px;
+  color: white;
+  margin-top: 100px;
+}
+
+.landing-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.cosmuse-button {
+  width: 275px;
+  height: 75px;
+  font-size: 28px;
+  margin: 10px auto;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+}
+
+@media (max-width: 500px) {
+  .landing-title {
+    font-size: 65px;
+  }
+}
+
+.cosmuse-form {
+  margin-top: 85px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+  margin-top: 50px;
+  padding-bottom: 60px;
+}
+
+.list-title {
+  color: white;
+  font-size: 28px;
+  margin-top: 30px;
+}

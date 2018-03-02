@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux'
 
 import { showUser, updateUser, deleteUser, deletePost } from './actions'
 
+import Header from '../styledComponents/Header'
+
 class UserShow extends Component {
 
     state = {
@@ -60,6 +62,7 @@ class UserShow extends Component {
         if(this.state.userDeleted) return (<Redirect to={`/`} />)
         return (
             <div >
+                <Header/>
                 {!this.state.isEditActive ? 
                 <div>
                     <img width='200' src={user.profile_pic} alt=""/>

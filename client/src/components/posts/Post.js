@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+import MainDiv from '../styledComponents/MainDiv'
+
 const Post = ({ post }) => {
 
     // const deletePost = () => {

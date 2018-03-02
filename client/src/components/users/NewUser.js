@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { addUser } from './actions'
+
+import MainDiv from '../styledComponents/MainDiv'
+import InputBox from '../styledComponents/InputBox'
+import Header from '../styledComponents/Header'
 
 class NewUser extends Component {
 
@@ -40,31 +44,28 @@ class NewUser extends Component {
             return (<Redirect to={`/users/${user.id}`} />)
         }
         return (
-            <div>
-                <form onSubmit={this.addNewUser} >
+            <MainDiv>
+                <Header/>
+                <form className='cosmuse-form' onSubmit={this.addNewUser} >
                     <div>
-                        <label >First Name</label>
-                        <input type="text" name="f_name" onChange={this.handleNewUserChange} />
+                        <InputBox type="text" name="f_name" onChange={this.handleNewUserChange} placeholder='First Name' />
                     </div>
                     <div>
-                        <label >Last Name</label>
-                        <input type="text" name="l_name" onChange={this.handleNewUserChange} />
+                        <InputBox type="text" name="l_name" onChange={this.handleNewUserChange} placeholder='Last Name' />
                     </div>
                     <div>
-                        <label >User Name</label>
-                        <input type="text" name="user_name" onChange={this.handleNewUserChange} />
+                        <InputBox type="text" name="user_name" onChange={this.handleNewUserChange} placeholder='User Name' />
                     </div>
                     <div>
-                        <label >Email</label>
-                        <input type="text" name="email" onChange={this.handleNewUserChange} />
+                        <InputBox type="text" name="email" onChange={this.handleNewUserChange} placeholder='Email' />
                     </div>
                     <div>
-                        <label >Profile Picture URL</label>
-                        <input type="text" name="profile_pic" onChange={this.handleNewUserChange} />
+                        <InputBox type="text" name="profile_pic" onChange={this.handleNewUserChange} placeholder='Profile Picture URL' />
                     </div>
-                    <input type="submit" value="Create Profile" />
+                    <InputBox className='cosmuse-button' type="submit" value="Create Profile" />
                 </form>
-            </div>
+                <Link to='/' ><button className='cosmuse-button' >Cancel</button></Link>
+            </MainDiv>
         )
         }
 }
